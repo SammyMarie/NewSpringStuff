@@ -1,0 +1,25 @@
+This project was developed using gradle as the dependency management.
+The Tomcat server was included in the gradle thus there's no need to have tomcat installed in your system though this means some performance lag
+due to waiting for the server to startup.
+Import the project to your IDE as a gradle project to view the code, gradle comes with all the version requirements.
+
+*Note:
+There is a need to check the version of JDK in your IDE as the project uses 1.8. 
+
+To run the project in your git bash: 
+1. Navigate to the project folder then, 
+2. Run the command "./gradlew clean tomcatRunWar" or in your windows commandline run 
+"gradlew clean tomcatRunWar" which will automatically startup the application.
+
+Technologies used:
+1. Gradle for build and dependency management.
+2. SonarQube for code quality review.
+3. Spring MVC.
+4. JDK 1.8.
+5. Tomcat application container.
+
+* For SonarQube to run on your PC if you don't already have that, please follow the instructions on any of these two links to both install and run it
+http://docs.sonarqube.org/display/SONAR/Installing+the+Server
+http://docs.sonarqube.org/display/SONAR/Get+Started+in+Two+Minutes
+
+ 

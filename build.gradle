@@ -1,0 +1,44 @@
+buildscript{
+    dependencies{
+        repositories {
+            jcenter()
+            maven {
+                url "https://plugins.gradle.org/m2/"
+            }
+        }
+        classpath 'com.bmuschko:gradle-tomcat-plugin:2.2.4'
+        classpath "org.sonarqube.gradle:gradle-sonarqube-plugin:1.1"
+    }
+}
+
+apply plugin: 'org.sonarqube'
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'com.bmuschko.tomcat'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.assertj:assertj-core:3.3.0'
+    compile 'javax.servlet:jstl:1.2'
+    compile 'org.slf4j:slf4j-log4j12:1.2'
+    compile 'org.springframework:spring-test:2.5'
+    compile 'info.freelibrary:freelib-marc4j:2.6.8'
+    compile 'javax.servlet:javax.servlet-api:3.0.1'
+    compile 'org.springframework:spring-webmvc:4.2.4.RELEASE'
+
+    tomcat 'org.apache.tomcat.embed:tomcat-embed-core:8.0.28'
+    tomcat 'org.apache.tomcat.embed:tomcat-embed-logging-juli:8.0.28'
+    tomcat 'org.apache.tomcat.embed:tomcat-embed-jasper:8.0.28'
+}
+
+task wrapper(type : Wrapper){
+    gradleVersion = '2.10'
+}
