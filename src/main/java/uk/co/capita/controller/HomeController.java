@@ -2,8 +2,10 @@ package uk.co.capita.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import uk.co.capita.service.MarcRead;
 
 /**
@@ -12,8 +14,12 @@ import uk.co.capita.service.MarcRead;
 @Controller
 public class HomeController {
 
+    private final MarcRead marcRead;
+
     @Autowired
-    private MarcRead marcRead;
+    public HomeController(MarcRead marcRead){
+        this.marcRead = marcRead;
+    }
 
     @RequestMapping(value = "/")
     public String indexPage(){
@@ -26,9 +32,10 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/booksDisplay")
-    public String displayPage(Model model, @RequestParam("author") String author){
+    public ModelAndView displayPage(ModelAndView model, @RequestParam("author") String author){
 
-        model.addAttribute("books", marcRead.xmlReader(author));
-        return "booksDisplay";
+        model.addObject("books", marcRead.xmlReader(author));
+        model.setViewName("booksDisplay");
+        return  model;
     }
 }
