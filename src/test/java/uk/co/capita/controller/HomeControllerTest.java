@@ -34,4 +34,16 @@ public class HomeControllerTest {
         assertThat(controller.displayPage(model, "Iain")).isNotNull();
         assertThat(model.getViewName()).isEqualTo("booksDisplay");
     }
+
+    @Test
+    public void checkIndexViewName(){
+        controller.indexPage(model);
+        assertThat(model.getViewName()).isEqualTo("index");
+    }
+
+    @Test
+    public void checkSearchViewName(){
+        controller.searchPage(model);
+        assertThat(model.getViewName()).isEqualTo("searchBooks");
+    }
 }
