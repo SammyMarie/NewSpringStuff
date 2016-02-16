@@ -22,13 +22,13 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/")
-    public ModelAndView indexPage( ModelAndView model){
+    public ModelAndView indexPage(ModelAndView model){
         model.setViewName("index");
         return model;
     }
 
     @RequestMapping(value = "/find", method = RequestMethod.GET)
-    public ModelAndView searchPage( ModelAndView model){
+    public ModelAndView searchPage(ModelAndView model){
         model.setViewName("searchBooks");
         return model;
     }

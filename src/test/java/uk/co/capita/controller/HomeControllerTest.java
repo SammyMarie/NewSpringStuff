@@ -25,13 +25,16 @@ public class HomeControllerTest {
 
     @Test
     public void checkConstructorIsNotEmpty(){
-        assertThat(marcRead.xmlReader("Banks").size()).isBetween(10, 18);
-        assertThat(marcRead.xmlReader("Iain M. Banks").get(0).getAuthorName()).isEqualTo("Banks, Iain.");
+        String authorName = "Banks";
+        String authorNameTwo = "Iain M. Banks";
+        assertThat(marcRead.xmlReader(authorName).size()).isBetween(10, 18);
+        assertThat(marcRead.xmlReader(authorNameTwo).get(0).getAuthorName()).isEqualTo("Banks, Iain.");
     }
 
     @Test
     public void checkDisplayHasBookList(){
-        assertThat(controller.displayPage(model, "Iain")).isNotNull();
+        String authorName = "Iain";
+        assertThat(controller.displayPage(model, authorName)).isNotNull();
         assertThat(model.getViewName()).isEqualTo("booksDisplay");
     }
 
