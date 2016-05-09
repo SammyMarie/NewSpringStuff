@@ -7,7 +7,7 @@ buildscript{
             }
         }
         classpath 'com.bmuschko:gradle-tomcat-plugin:2.2.4'
-        classpath "org.sonarqube.gradle:gradle-sonarqube-plugin:1.1"
+        classpath 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.0'
     }
 }
 
@@ -40,5 +40,5 @@ dependencies {
 }
 
 task wrapper(type : Wrapper){
-    gradleVersion = '2.10'
+    gradleVersion = '2.13'
 }
